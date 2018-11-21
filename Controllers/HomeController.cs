@@ -12,26 +12,11 @@ namespace blackfriday_bingo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            var logos = Enumerable.Range(1, 18)
+                .Select(i => $"logo-{i}.png")
+                .Shuffle()
+                .Take(9);
+            return View(logos);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
