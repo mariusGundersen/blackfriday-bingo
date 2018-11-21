@@ -12,11 +12,20 @@ namespace blackfriday_bingo.Controllers
     {
         public IActionResult Index()
         {
-            var logos = Enumerable.Range(1, 18)
-                .Select(i => $"logo-{i}.png")
-                .Shuffle()
-                .Take(9);
-            return View(logos);
+            if(Request.Cookies.TryGetValue("bingo-board", out var board)){
+                var logos = board.Split("-");
+                return View(logos);
+            }else{
+                var logos = Enumerable.Range(1, 18)
+                    .Shuffle()
+                    .Select(i => i.ToString())
+                    .Take(9)
+                    .ToList();
+
+                Response.Cookies.Append("bingo-board", string.Join("-", logos));
+                return View(logos);
+
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
