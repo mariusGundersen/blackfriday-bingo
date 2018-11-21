@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using blackfriday_bingo.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace blackfriday_bingo.Controllers
 {
@@ -12,9 +13,19 @@ namespace blackfriday_bingo.Controllers
     {
         public IActionResult Index()
         {
+            var model = GetOrCreateBoard();
+            return View(model);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private IEnumerable<string> GetOrCreateBoard(){
             if(Request.Cookies.TryGetValue("bingo-board", out var board)){
-                var logos = board.Split("-");
-                return View(logos);
+                return board.Split("-");
             }else{
                 var logos = Enumerable.Range(1, 18)
                     .Shuffle()
@@ -22,16 +33,15 @@ namespace blackfriday_bingo.Controllers
                     .Take(9)
                     .ToList();
 
-                Response.Cookies.Append("bingo-board", string.Join("-", logos));
-                return View(logos);
+                Response.Cookies.Append("bingo-board", string.Join("-", logos), new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddYears(1),
+                    Path = "/"
+                });
+
+                return logos;
 
             }
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
