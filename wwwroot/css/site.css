@@ -29,10 +29,33 @@ body {
     display: flex;
 }
 
-.bingo-grid .item div[data-is-alive=False] {
+.bingo-grid .item [data-is-alive] {
     flex: 1 0 auto;
+    display: flex;
+}
+
+.bingo-grid .item div[data-is-alive=False] {
     background: #ffffff88 url(/images/bang.png) center center no-repeat;
     background-size: 50% 50%;
+}
+
+.history {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: end;
+}
+
+.history .status {
+    height: 10px;
+    flex: 1 1 auto;
+}
+
+.history .status[data-status=True] {
+    background: linear-gradient(to bottom,#00800000 0%, #008000 50%,#00800000 100%);
+}
+
+.history .status[data-status=False] {
+    background: linear-gradient(to bottom,#ff000000 0%,#ff0000 50%,#ff000000 100%);
 }
 
 .bingo-grid h1 {

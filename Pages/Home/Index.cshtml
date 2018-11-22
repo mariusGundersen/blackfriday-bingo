@@ -9,7 +9,14 @@
     @foreach (var item in Model)
     {
         <div data-id="@(item.Id)" class="item" style="background-image:url(/images/logo-@(item.Id).png)">
-            <div data-is-alive="@(item.IsAlive)"></div>
+            <div data-is-alive="@(item.IsAlive)">
+                <div class="history">
+                    @foreach (var alive in item.History)
+                    {
+                        <div class="status" data-status="@alive"></div>
+                    }
+                </div>
+            </div>
         </div>
     }
 </div>
