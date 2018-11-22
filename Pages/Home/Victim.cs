@@ -1,12 +1,7 @@
-using System;
-
 namespace BlackFridayBingo
 {
     public class Victim
     {
-
-        private static readonly Random Random = new Random();
-
         public Victim(string id, string url)
         {
             Id = id;
@@ -17,6 +12,6 @@ namespace BlackFridayBingo
 
         public string Url { get; }
 
-        public bool IsAlive => Random.NextDouble() > 0.5;
+        public bool IsAlive { get; set; } = true;
     }
 }

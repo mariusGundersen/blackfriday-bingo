@@ -12,7 +12,7 @@ namespace BlackFridayBingo.Pingdom
             {
                 var uri = new Uri(url);
                 var pinger = new Pinger(uri);
-                var thread = new Thread(pinger.Start) 
+                var thread = new Thread(pinger.Start)
                 {
                     IsBackground = true
                 };

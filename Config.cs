@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BlackFridayBingo;
 
 namespace BlackFridayBingo
 {
@@ -19,12 +20,11 @@ namespace BlackFridayBingo
             new Victim("11", "https://www.hifiklubben.no/"),
             new Victim("12", "https://www.netonnet.no/"),
             new Victim("13", "https://www.xxl.no/"),
-            new Victim("14", "https://www.stormberg.no/"),
+            new Victim("14", "https://www.stormberg.com/no/"),
             new Victim("15", "https://www.bildeler.no/"),
             new Victim("16", "https://www.multicom.no/"),
             new Victim("17", "https://no.coolshop.com/"),
-            new Victim("18", "https://www.komplett.no/"),
+            new Victim("18", "https://www.komplett.no/")
         };
-
     }
 }

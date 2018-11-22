@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BlackFridayBingo.Models;
 using Microsoft.AspNetCore.Http;
@@ -24,24 +23,25 @@ namespace BlackFridayBingo.Pages.Home
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private IEnumerable<Victim> GetOrCreateBoard(){
-            if(Request.Cookies.TryGetValue("bingo-board", out var board)){
+        private IEnumerable<Victim> GetOrCreateBoard()
+        {
+            if (Request.Cookies.TryGetValue("bingo-board", out var board))
+            {
                 return board.Split("-").Select(id => Config.Victims.First(v => v.Id == id));
-            }else{
-                var logos = Config.Victims
-                    .Shuffle()
-                    .Take(9)
-                    .ToList();
-
-                Response.Cookies.Append("bingo-board", string.Join("-", logos.Select(i => i.Id)), new CookieOptions
-                {
-                    Expires = DateTimeOffset.Now.AddYears(1),
-                    Path = "/"
-                });
-
-                return logos;
-
             }
+
+            var logos = Config.Victims
+                .Shuffle()
+                .Take(9)
+                .ToList();
+
+            Response.Cookies.Append("bingo-board", string.Join("-", logos.Select(i => i.Id)), new CookieOptions
+            {
+                Expires = DateTimeOffset.Now.AddYears(1),
+                Path = "/"
+            });
+
+            return logos;
         }
     }
 }
