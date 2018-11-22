@@ -8,6 +8,7 @@
     <h1>Black Friday Bingo</h1>
     @foreach (var item in Model)
     {
-        <img src="/images/logo-@(item).png">
+        <div class="item" style="background-image:url(/images/logo-@(item).png)">
+        </div>
     }
 </div>
