@@ -10,7 +10,7 @@ namespace BlackFridayBingo.Pingdom
     public class Pinger
     {
         private readonly Uri _uri;
-        private const int IntervalMillis = 5000;
+        private const int IntervalMillis = 60*1000;
         private const int HttpTimeOut = 4000;
 
         private readonly HttpClient _jsonClient;
@@ -28,7 +28,7 @@ namespace BlackFridayBingo.Pingdom
         {
             while (await Ping())
             {
-                Thread.Sleep(IntervalMillis);
+                await Task.Delay(IntervalMillis);
             }
         }
 
@@ -49,11 +49,11 @@ namespace BlackFridayBingo.Pingdom
                     {
                         Reporter.Add(PingReport.CreateFailure(_uri, watch.ElapsedMilliseconds, result.StatusCode, result.ReasonPhrase));
                     }
-                
+
                 }
                 catch (Exception e)
                 {
-                    Reporter.Add(PingReport.CreateFailure(_uri, watch.ElapsedMilliseconds, HttpStatusCode.SeeOther, e.Message));
+                    Reporter.Add(PingReport.CreateFailure(_uri, watch.ElapsedMilliseconds, HttpStatusCode.GatewayTimeout, e.Message));
                 }
             }
 

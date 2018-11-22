@@ -26,7 +26,7 @@ namespace BlackFridayBingo.Pingdom
             }
             else
             {
-                hostReports[path].PingReport = report;    
+                hostReports[path].PingReport = report;
             }
 
             if (!HostStatuses.ContainsKey(host))
