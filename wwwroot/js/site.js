@@ -4,4 +4,12 @@
   }, false);
 }
 
-setTimeout(() => document.location.reload(), 1000*30);
+setInterval(async () => {
+  var victims = await fetch('/api/victims').then(r => r.json());
+  for(const victim of victims){
+    const item = document.querySelector(`.item[data-id="${victim.id}"] div`);
+    if(item) {
+      item.dataset["isAlive"] = victim.isAlive ? "True" : "False";
+    }
+  }
+}, 1000*30);

@@ -8,7 +8,7 @@
     <h1>Black Friday Bingo</h1>
     @foreach (var item in Model)
     {
-        <div class="item" style="background-image:url(/images/logo-@(item.Id).png)">
+        <div data-id="@(item.Id)" class="item" style="background-image:url(/images/logo-@(item.Id).png)">
             <div data-is-alive="@(item.IsAlive)"></div>
         </div>
     }

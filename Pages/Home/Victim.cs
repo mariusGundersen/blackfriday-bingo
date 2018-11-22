@@ -1,18 +1,22 @@
+using System;
+
 namespace BlackFridayBingo
 {
-  public class Victim
-  {
-
-    public Victim(string id, string url)
+    public class Victim
     {
-      Id = id;
-      Url = url;
+
+        private static readonly Random Random = new Random();
+
+        public Victim(string id, string url)
+        {
+            Id = id;
+            Url = url;
+        }
+
+        public string Id { get; }
+
+        public string Url { get; }
+
+        public bool IsAlive => Random.NextDouble() > 0.5;
     }
-
-    public string Id { get; }
-
-    public string Url { get; }
-
-    public bool IsAlive => true;
-  }
 }

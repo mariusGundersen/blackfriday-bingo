@@ -31,7 +31,7 @@ body {
 
 .bingo-grid .item div[data-is-alive=False] {
     flex: 1 0 auto;
-    background: url(/images/bang.png) center center no-repeat;
+    background: #ffffff88 url(/images/bang.png) center center no-repeat;
     background-size: 50% 50%;
 }
 

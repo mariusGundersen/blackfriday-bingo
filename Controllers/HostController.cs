@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using BlackFridayBingo.Pingdom;
 using Microsoft.AspNetCore.Mvc;
 
-namespace blackfriday_bingo.Controllers
+namespace BlackFridayBingo.Controllers
 {
     [ApiController]
     [Route("/api")]
@@ -16,6 +16,12 @@ namespace blackfriday_bingo.Controllers
         public IEnumerable<HostReports> GetHostReports(string hostName)
         {
             return HostService.GetHostReports(hostName);
+        }
+
+        [Route("victims")]
+        public IEnumerable<Victim> Victims()
+        {
+            return Config.Victims;
         }
     }
 }
