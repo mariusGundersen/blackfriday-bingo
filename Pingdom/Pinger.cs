@@ -10,7 +10,7 @@ namespace BlackFridayBingo.Pingdom
     {
         private readonly Uri _uri;
         private const int IntervalMillis = 60_000;
-        private const int HttpTimeOut = 7_000;
+        private const int HttpTimeOut = 10_000;
 
         private readonly HttpClient _jsonClient;
 
@@ -55,7 +55,7 @@ namespace BlackFridayBingo.Pingdom
 
         void SetAlive(bool isAlive)
         {
-            Config.Victims.First(x => new Uri(x.Url) == _uri).IsAlive = isAlive;
+            Config.Victims.First(x => new Uri(x.Url) == _uri).History.Enqueue(isAlive);
         }
     }
 }
