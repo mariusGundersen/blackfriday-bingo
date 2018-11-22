@@ -22,7 +22,9 @@ body {
 
 .bingo-grid img {
     width: 30vw;
-    max-width: 150px;
+    max-width: 170px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .bingo-grid h1 {
