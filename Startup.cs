@@ -32,7 +32,7 @@ namespace BlackFridayBingo
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // PingdomService.Run(Config.Victims.Select(x => x.Url));
+            PingdomService.Run(Config.Victims.Select(x => x.Url));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
