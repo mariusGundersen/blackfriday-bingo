@@ -1,0 +1,16 @@
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
+
+namespace blackfriday_bingo.Pingdom
+{
+    public class Reporter
+    {
+        public static ConcurrentQueue<PingReport> Queue = new ConcurrentQueue<PingReport>();
+
+        public static void Add(PingReport pingReport)
+        {
+            Queue.Enqueue(pingReport);
+            Debug.WriteLine(pingReport.ToString());
+        }
+    }
+}
