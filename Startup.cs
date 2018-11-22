@@ -35,6 +35,7 @@ namespace BlackFridayBingo
             var connections = Configuration.GetSection("ConnectionStrings").GetChildren().AsEnumerable().Select(x => x.Value);
 
             PingdomService.Run(connections);
+            Reporter.Start();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

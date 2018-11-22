@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
@@ -36,7 +36,7 @@ namespace blackfriday_bingo.Pingdom
                 var watch = Stopwatch.StartNew();
                 try
                 {
-                    var result = await _jsonClient.GetAsync(_uri.Query, cancellationTokenSource.Token);
+                    var result = await _jsonClient.GetAsync(_uri.PathAndQuery, cancellationTokenSource.Token);
 
                     if (result.IsSuccessStatusCode)
                     {
