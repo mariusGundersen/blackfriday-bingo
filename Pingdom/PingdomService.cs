@@ -1,16 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace BlackFridayBingo.Pingdom
 {
     public class PingdomService
     {
-        static readonly TimeSpan WaitBetweenCalls = TimeSpan.FromSeconds(15);
+        static readonly TimeSpan WaitBetweenCalls = TimeSpan.FromSeconds(30);
 
         public static async void Run(IEnumerable<string> urls)
         {
