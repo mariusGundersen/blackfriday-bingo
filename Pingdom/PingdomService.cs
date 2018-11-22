@@ -1,24 +1,24 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlackFridayBingo.Pingdom
 {
     public class PingdomService
     {
-        public static void Run(IEnumerable<string> urls)
-        {
-            foreach (var url in urls)
-            {
-                var uri = new Uri(url);
-                var pinger = new Pinger(uri);
-                var thread = new Thread(pinger.Start)
-                {
-                    IsBackground = true
-                };
-                thread.Start();
+        static readonly TimeSpan WaitBetweenCalls = TimeSpan.FromMinutes(1);
 
-                Thread.Sleep(150);
+        public static async void Run(IEnumerable<string> urls)
+        {
+            var pingers = urls.Select(x => new Pinger(new Uri(x))).ToList();
+            while (true)
+            {
+                await Task.WhenAll(pingers.Select(x => x.Ping())
+                    .Concat(new[]
+                    {
+                        Task.Delay(WaitBetweenCalls)
+                    }).ToArray());
             }
         }
     }

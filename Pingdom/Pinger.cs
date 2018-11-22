@@ -9,7 +9,6 @@ namespace BlackFridayBingo.Pingdom
     public class Pinger
     {
         private readonly Uri _uri;
-        private const int IntervalMillis = 60_000;
         private const int HttpTimeOut = 10_000;
 
         private readonly HttpClient _jsonClient;
@@ -23,16 +22,7 @@ namespace BlackFridayBingo.Pingdom
             };
         }
 
-        public async void Start()
-        {
-            while (true)
-            {
-                await Ping();
-                await Task.Delay(IntervalMillis);
-            }
-        }
-
-        private async Task Ping()
+        public async Task Ping()
         {
             using (var cancellationTokenSource = new CancellationTokenSource(HttpTimeOut))
             {
