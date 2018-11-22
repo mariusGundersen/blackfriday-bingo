@@ -1,27 +1,32 @@
 ﻿html, body {
-    height: 100%;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .bingo-grid {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: auto 200px 200px 200px;
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-template-rows: auto 30vw 30vw 30vw;
     justify-items: center;
     align-items: center;
+    justify-content: center;
+}
+
+@media(min-width: 800px){
+    .bingo-grid {
+        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: auto 200px 200px 200px;
+    }
 }
 
 .bingo-grid img {
-    width: 150px;
+    width: 30vw;
+    max-width: 150px;
 }
 
 .bingo-grid h1 {
     grid-column: 1 / 4;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 5vh;
+    font-size: 2em;
 }
