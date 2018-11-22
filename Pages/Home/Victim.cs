@@ -3,14 +3,16 @@ namespace BlackFridayBingo
   public class Victim
   {
 
-    public Victim(string image, string url)
+    public Victim(string id, string url)
     {
-      Image = image;
+      Id = id;
       Url = url;
     }
 
-    public string Image { get; }
+    public string Id { get; }
 
     public string Url { get; }
+
+    public bool IsAlive => true;
   }
 }

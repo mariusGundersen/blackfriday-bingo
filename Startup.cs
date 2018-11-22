@@ -31,11 +31,11 @@ namespace BlackFridayBingo
                 .UseNamespaceViewLocation()
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-                
+
             var connections = Configuration.GetSection("ConnectionStrings").GetChildren().AsEnumerable().Select(x => x.Value);
 
-            PingdomService.Run(connections);
-            Reporter.Start();
+            //PingdomService.Run(connections);
+            //Reporter.Start();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

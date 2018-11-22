@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace blackfriday_bingo.Controllers
 {
     [ApiController]
+    [Route("/api")]
     public class HostController : Controller
     {
         public IEnumerable<HostStatus> GetAllHostStatuses()
