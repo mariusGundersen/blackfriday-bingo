@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BlackFridayBingo.Pingdom;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Protocols;
 
 namespace BlackFridayBingo
 {
@@ -45,6 +38,12 @@ namespace BlackFridayBingo
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+            }
+
+            var initialVictimsData = JsonFileSaver.ReadFromFile(env);
+            if (initialVictimsData != null)
+            {
+                Config.Victims = initialVictimsData;
             }
 
             app.UseStaticFiles();

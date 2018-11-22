@@ -1,5 +1,4 @@
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace BlackFridayBingo
@@ -16,15 +15,15 @@ namespace BlackFridayBingo
 
         public string Url { get; }
 
-        public FixedSizedQueue<bool> History { get; } = new FixedSizedQueue<bool>(60*3);
+        public FixedSizedQueue<bool> History { get; set; } = new FixedSizedQueue<bool>(60*3);
 
-        public bool IsAlive => History.Last();
+        public bool IsAlive => History.IsEmpty || History.Last();
 
         public class FixedSizedQueue<T> : ConcurrentQueue<T>
         {
             private readonly object syncObject = new object();
 
-            public int Size { get; private set; }
+            public int Size { get; }
 
             public FixedSizedQueue(int size)
             {

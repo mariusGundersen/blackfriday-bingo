@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using BlackFridayBingo;
 
 namespace BlackFridayBingo
 {
     public class Config
     {
-        public static readonly IReadOnlyList<Victim> Victims = new List<Victim>
+        public static IReadOnlyList<Victim> Victims = new List<Victim>
         {
             new Victim("1", "https://www.skousen.no/"),
             new Victim("2", "https://www.elkjop.no/"),
