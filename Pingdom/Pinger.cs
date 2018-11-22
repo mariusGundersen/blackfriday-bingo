@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Komplett.HttpClient;
 
 namespace BlackFridayBingo.Pingdom
 {
@@ -13,12 +13,15 @@ namespace BlackFridayBingo.Pingdom
         private const int IntervalMillis = 5000;
         private const int HttpTimeOut = 4000;
 
-        private readonly JsonClient _jsonClient;
+        private readonly HttpClient _jsonClient;
 
         public Pinger(Uri uri)
         {
             _uri = uri;
-            _jsonClient = new JsonClient(uri.GetLeftPart(UriPartial.Authority));
+            _jsonClient = new HttpClient
+            {
+                BaseAddress = uri
+            };
         }
 
         public async void Start()
