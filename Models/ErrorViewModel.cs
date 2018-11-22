@@ -1,6 +1,6 @@
 using System;
 
-namespace blackfriday_bingo.Models
+namespace BlackFridayBingo.Models
 {
     public class ErrorViewModel
     {

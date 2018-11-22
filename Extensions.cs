@@ -5,8 +5,9 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace blackfriday_bingo
+namespace BlackFridayBingo
 {
     static class RandomExtensions
     {
@@ -25,6 +26,21 @@ namespace blackfriday_bingo
             }
 
             return array;
+        }
+
+        public static IServiceCollection UseNamespaceViewLocation(
+            this IServiceCollection services,
+            string prefix = null)
+        {
+            prefix = prefix ?? Assembly.GetCallingAssembly().GetName().Name;
+            services.Configure<RazorViewEngineOptions>(config =>
+            {
+                config.ViewLocationFormats.Insert(0, "/{3}/{0}.cshtml");
+                config.AreaViewLocationFormats.Insert(0, "/{3}/{0}.cshtml");
+                config.ViewLocationExpanders.Insert(0, new NamespaceViewLocationExpander(prefix));
+            });
+
+            return services;
         }
     }
 }

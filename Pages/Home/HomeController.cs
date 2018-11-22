@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using blackfriday_bingo.Models;
+using BlackFridayBingo.Models;
 using Microsoft.AspNetCore.Http;
 
-namespace blackfriday_bingo.Controllers
+namespace BlackFridayBingo.Pages.Home
 {
     public class HomeController : Controller
     {
