@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Komplett.HttpClient;
 
-namespace blackfriday_bingo.Pingdom
+namespace BlackFridayBingo.Pingdom
 {
     public class Pinger
     {

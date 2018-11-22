@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace blackfriday_bingo.Pingdom
+namespace BlackFridayBingo.Pingdom
 {
     public class PingReport
     {

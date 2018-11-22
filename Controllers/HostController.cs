@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using blackfriday_bingo.Pingdom;
+using BlackFridayBingo.Pingdom;
 using Microsoft.AspNetCore.Mvc;
 
 namespace blackfriday_bingo.Controllers

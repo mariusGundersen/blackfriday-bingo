@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 
-namespace blackfriday_bingo.Pingdom
+namespace BlackFridayBingo.Pingdom
 {
     public class Reporter
     {

@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace blackfriday_bingo.Pingdom
+namespace BlackFridayBingo.Pingdom
 {
     public class PingdomService
     {
