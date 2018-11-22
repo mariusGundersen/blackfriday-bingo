@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols;
 
 namespace blackfriday_bingo
 {
@@ -28,12 +29,9 @@ namespace blackfriday_bingo
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            PingdomService.Run(new List<string>
-            {
-                "https://dev.komplett.no/",
-                "https://dev.komplett.no/department/10000/datautstyr",
-                "https://dev.komplett.no/kampanje/8631/datautstyr/periferiutstyr/skjermer/skjermer/skjermguiden?tag=tnpanel"
-            });
+            var connections = Configuration.GetSection("ConnectionStrings").GetChildren().AsEnumerable().Select(x => x.Value);
+
+            PingdomService.Run(connections);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
