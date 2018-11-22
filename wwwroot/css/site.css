@@ -22,11 +22,17 @@ body {
 }
 
 .bingo-grid .item {
-    padding: 10px;
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100%;
+    display: flex;
+}
+
+.bingo-grid .item div[data-is-alive=False] {
+    flex: 1 0 auto;
+    background: url(/images/bang.png) center center no-repeat;
+    background-size: 50% 50%;
 }
 
 .bingo-grid h1 {

@@ -3,3 +3,5 @@
     item.toggleAttribute()
   }, false);
 }
+
+setTimeout(() => document.location.reload(), 1000*30);
