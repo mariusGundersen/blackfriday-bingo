@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 
 namespace blackfriday_bingo.Pingdom
@@ -17,7 +17,7 @@ namespace blackfriday_bingo.Pingdom
 
         public override string ToString()
         {
-            return $"Url: {Uri.ToString()}, {Success}, {StatusCode}, Latency: {Latency}{Environment.NewLine}Error: {Error}";
+            return $"Url: {Uri.ToString()}, {Success}, {StatusCode}, Latency: {Latency} Error: {Error}";
         }
 
         public static PingReport CreateSuccess(Uri uri, long latency)
@@ -26,7 +26,8 @@ namespace blackfriday_bingo.Pingdom
             {
                 Success = true,
                 Uri = uri,
-                Latency = latency
+                Latency = latency,
+                StatusCode = HttpStatusCode.OK
             };
         }
 

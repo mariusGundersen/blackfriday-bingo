@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 
 namespace blackfriday_bingo.Pingdom
@@ -10,7 +10,9 @@ namespace blackfriday_bingo.Pingdom
         public static void Add(PingReport pingReport)
         {
             Queue.Enqueue(pingReport);
+#if DEBUG
             Debug.WriteLine(pingReport.ToString());
+#endif
         }
     }
 }
