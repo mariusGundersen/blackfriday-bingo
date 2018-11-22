@@ -1,8 +1,7 @@
 ﻿html, body {
+    background: #eee;
 }
 
-body {
-}
 
 .bingo-grid {
     display: grid;
@@ -23,6 +22,7 @@ body {
 
 .bingo-grid .item {
     box-sizing: border-box;
+    background-color: white;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100%;
@@ -42,20 +42,21 @@ body {
 .history {
     display: flex;
     flex: 1 1 auto;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .history .status {
     height: 10px;
     flex: 1 1 auto;
+    border-radius: 50% 50% 0 0;
 }
 
 .history .status[data-status=True] {
-    background: linear-gradient(to bottom,#00800000 0%, #008000 50%,#00800000 100%);
+    background: green;
 }
 
 .history .status[data-status=False] {
-    background: linear-gradient(to bottom,#ff000000 0%,#ff0000 50%,#ff000000 100%);
+    background: red;
 }
 
 .bingo-grid h1 {
@@ -63,4 +64,5 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
     text-align: center;
+    color: #333;
 }
